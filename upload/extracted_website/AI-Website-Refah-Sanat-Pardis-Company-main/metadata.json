@@ -1,0 +1,6 @@
+{
+  "name": "Refah Sanat Pardis Trading Co.",
+  "description": "Bilingual (English / Persian) editorial corporate website for Refah Sanat Pardis Trading Co., an international trading, trade finance, and commodity exchange firm.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

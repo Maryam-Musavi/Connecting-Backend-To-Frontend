@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: transparent; }
+      .blue-mark { fill: #003D6B; }
+      .grey-mark { fill: #7D8895; }
+      .white-mark { fill: #FFFFFF; }
+      .line-dark { stroke: #003D6B; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+  
+  <rect width="100%" height="100%" class="bg" />
+
+  <!-- EMBLEM GROUP (Centered at 250, 180) -->
+  <g transform="translate(250, 180)">
+    <!-- Top Blue Chevron -->
+    <path class="blue-mark" d="M 0,-140 L 52,-88 L 35,-88 L 0,-123 L -35,-88 L -52,-88 Z" />
+
+    <!-- Bottom Blue Chevron -->
+    <path class="blue-mark" d="M 0,140 L 52,88 L 35,88 L 0,123 L -35,88 L -52,88 Z" />
+
+    <!-- Left Grey Chevron -->
+    <path class="grey-mark" d="M -140,0 L -88,-52 L -88,-35 L -123,0 L -88,35 L -88,52 Z" />
+
+    <!-- Right Grey Chevron -->
+    <path class="grey-mark" d="M 140,0 L 88,-52 L 88,-35 L 123,0 L 88,35 L 88,52 Z" />
+
+    <!-- Central Blue Square -->
+    <rect x="-82" y="-82" width="164" height="164" class="blue-mark" rx="2" />
+
+    <!-- GEAR (Top section of square) -->
+    <g transform="translate(0, -22)">
+      <!-- 8 Teeth of Gear -->
+      <g class="white-mark">
+        <rect x="-6" y="-48" width="12" height="10" rx="1" />
+        <rect x="-6" y="38" width="12" height="10" rx="1" />
+        <rect x="-48" y="-6" width="10" height="12" rx="1" />
+        <rect x="38" y="-6" width="10" height="12" rx="1" />
+        
+        <rect x="-6" y="-48" width="12" height="10" rx="1" transform="rotate(45)" />
+        <rect x="-6" y="-48" width="12" height="10" rx="1" transform="rotate(135)" />
+        <rect x="-6" y="-48" width="12" height="10" rx="1" transform="rotate(225)" />
+        <rect x="-6" y="-48" width="12" height="10" rx="1" transform="rotate(315)" />
+
+        <!-- Gear Main Circle Body -->
+        <circle cx="0" cy="0" r="41" />
+      </g>
+      
+      <!-- Inner Dark Blue Circle -->
+      <circle cx="0" cy="0" r="28" class="blue-mark" />
+
+      <!-- Center Logo Emblem (Stylized S / Hexagon in white) -->
+      <g class="white-mark" transform="scale(0.95)">
+        <path d="M -12,-10 L 4,-10 C 10,-10 14,-6 14,0 C 14,6 10,10 4,10 L -4,10 L -4,4 L 4,4 C 6,4 8,2 8,0 C 8,-2 6,-4 4,-4 L -12,-4 Z" fill="#FFFFFF" />
+        <path d="M 12,10 L -4,10 C -10,10 -14,6 -14,0 C -14,-6 -10,-10 -4,-10 L 4,-10 L 4,-4 L -4,-4 C -6,-4 -8,-2 -8,0 C -8,2 -6,4 -4,4 L 12,4 Z" fill="#FFFFFF" />
+        <polygon points="0,-16 6,-10 -6,-10" fill="#FFFFFF" />
+        <polygon points="0,16 6,10 -6,10" fill="#FFFFFF" />
+      </g>
+    </g>
+
+    <!-- STACKS (Bottom section of square) -->
+    <g transform="translate(0, 38)">
+      <!-- Left Stack -->
+      <g transform="translate(-32, 0)">
+        <polygon points="-30,0 0,-14 30,0 0,14" fill="#FFFFFF" stroke="#003D6B" stroke-width="1.5" />
+        <polygon points="-30,6 0,-8 30,6 0,20" fill="#FFFFFF" stroke="#003D6B" stroke-width="1.5" />
+        <polygon points="-30,12 0,-2 30,12 0,26" fill="#FFFFFF" stroke="#003D6B" stroke-width="1.5" />
+        <polygon points="-30,18 0,4 30,18 0,32" fill="#FFFFFF" stroke="#003D6B" stroke-width="1.5" />
+      </g>
+
+      <!-- Right Stack -->
+      <g transform="translate(32, 0)">
+        <polygon points="-30,0 0,-14 30,0 0,14" fill="#FFFFFF" stroke="#003D6B" stroke-width="1.5" />
+        <polygon points="-30,6 0,-8 30,6 0,20" fill="#FFFFFF" stroke="#003D6B" stroke-width="1.5" />
+        <polygon points="-30,12 0,-2 30,12 0,26" fill="#FFFFFF" stroke="#003D6B" stroke-width="1.5" />
+        <polygon points="-30,18 0,4 30,18 0,32" fill="#FFFFFF" stroke="#003D6B" stroke-width="1.5" />
+      </g>
+    </g>
+  </g>
+
+  <!-- TEXT BELOW LOGO MARK -->
+  <g transform="translate(250, 375)" text-anchor="middle">
+    <!-- Persian Title -->
+    <text y="0" fill="#003D6B" font-family="Vazirmatn, Tahoma, sans-serif" font-weight="800" font-size="25" letter-spacing="0">
+      شرکت بازرگانی رفاه صنعت پردیس
+    </text>
+    
+    <!-- Persian Subtitle -->
+    <text y="28" fill="#003D6B" font-family="Vazirmatn, Tahoma, sans-serif" font-weight="600" font-size="16">
+      (سهامی خاص)
+    </text>
+    
+    <!-- English Subtitle -->
+    <text y="58" fill="#003D6B" font-family="Times New Roman, Georgia, serif" font-weight="600" font-size="18" letter-spacing="0.5">
+      Refah Sanat Pardis Commercial CO.
+    </text>
+  </g>
+</svg>
