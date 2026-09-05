@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ثبت‌نام | شرکت بازرگانی رفاه صنعت پردیس</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__brand">
+      <span class="site-header__mark" aria-hidden="true"></span>
+      <span class="site-header__name">رفاه صنعت پردیس</span>
+    </div>
+    <span class="site-header__tag">شرکت بازرگانی</span>
+  </header>
+
+  <main class="page">
+    <section class="panel">
+      <h1 class="panel__title">ثبت استعلام تجاری</h1>
+      <p class="panel__lead">
+        اطلاعات خودتون رو وارد کنید؛ درخواست هم توی دیتابیس ثبت می‌شه، هم فوراً براتون ایمیل می‌شه.
+      </p>
+
+      <form id="registerForm" class="form" novalidate>
+
+        <!-- هانی‌پات ضدِاسپم: این فیلد با CSS مخفیه، آدم‌ها نمی‌بیننش ولی ربات‌ها معمولاً پرش می‌کنن -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">وبسایت</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form__row">
+          <div class="field">
+            <label for="name">نام و نام خانوادگی <span class="req">*</span></label>
+            <input type="text" id="name" name="name" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="firm">نام شرکت / سازمان</label>
+            <input type="text" id="firm" name="firm" autocomplete="organization">
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="field">
+            <label for="phone">شماره تماس <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" required placeholder="۰۹۱۲۱۲۳۴۵۶۷" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="email">ایمیل</label>
+            <input type="email" id="email" name="email" autocomplete="email">
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="field">
+            <label for="country">کشور <span class="req">*</span></label>
+            <input type="text" id="country" name="country" required value="ایران" autocomplete="country-name">
+          </div>
+          <div class="field">
+            <label for="sector">حوزه‌ی استعلام</label>
+            <select id="sector" name="sector">
+              <option value="">— انتخاب کنید —</option>
+              <option value="واردات">واردات</option>
+              <option value="صادرات">صادرات</option>
+              <option value="نمایندگی">نمایندگی</option>
+              <option value="سایر">سایر</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="message">شرح درخواست <span class="req">*</span></label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <span class="submit-btn__label">ارسال درخواست</span>
+          <span class="submit-btn__spinner" aria-hidden="true"></span>
+        </button>
+
+        <div id="formNotice" class="notice" role="status" hidden></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>ثبت‌نام‌ها در SQLite ذخیره و از طریق PHP ایمیل می‌شوند</span>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

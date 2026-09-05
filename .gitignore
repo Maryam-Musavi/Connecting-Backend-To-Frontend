@@ -1,0 +1,5 @@
+# تنظیمات حساس (رمز ایمیل، کلید ادمین) - از config.example.php کپی بگیر
+backend/config.php
+
+# فایل دیتابیس SQLite (داده‌های واقعی کاربران، نباید در گیت باشه)
+backend/data/*.db
