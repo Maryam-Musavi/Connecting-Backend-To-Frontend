@@ -15,7 +15,7 @@ if (!is_array($data)) {
 }
 
 $name = trim((string)($data['name'] ?? ''));
-$phone = trim((string)($data['phone'] ?? ''))
+$phone = trim((string)($data['phone'] ?? ''));
 
 echo json_encode([
     'success' => true,
