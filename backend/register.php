@@ -36,3 +36,32 @@ echo json_encode([
     'got_phone' => $phone,
     'got_email' => $email,
 ], JSON_UNESCAPED_UNICODE);
+
+require_once __DIR__ . '/db.php';
+
+$firm    = trim((string)($data['firm'] ?? ''));
+$country = trim((string)($data['country'] ?? ''));
+$sector  = trim((string)($data['sector'] ?? ''));
+$message = trim((string)($data['message'] ?? ''));
+
+try {
+    $pdo  = get_db_connection();
+    $stmt = $pdo ->prepare(
+        'IMSERT INTO inquiries
+            (name, firm, email, phone, country, sector, message, created_at)
+        VALUES
+            (:name, :firm, :email, :phone, country, :sector, :message, :created_at)'   
+    );
+    $stmt ->execute([
+        ':name'       => $name,
+        ':firm'       => $firm,
+        ':email'      => $email,
+        ':phone'      => $phone,
+        ':country'    => $country,
+        ':sector'     => $sector,
+        ':message'    => $message,
+        ':created_at' => date('c'), 
+    ]);
+
+    echo json_encode([''])
+}
