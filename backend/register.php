@@ -63,5 +63,9 @@ try {
         ':created_at' => date('c'), 
     ]);
 
-    echo json_encode([''])
+    echo json_encode(['success' => true, 'message' => 'درخواست با موفقت ثبت شد'])
+} catch (Throwable $e) {
+    http_response_code(500);
+    echo json_encode(['success' => false, 'message' => 'خطا در ذخیره سازی'],
+                    JSON_UNESCAPED_UNICODE);
 }
