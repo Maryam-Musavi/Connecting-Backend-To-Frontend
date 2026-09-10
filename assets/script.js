@@ -11,6 +11,34 @@ const submitBtn = form.querySelector('.submit-btn');
 // const BACKEND_URL = 'https://example.com/backend/register.php';
 const BACKEND_URL = 'backend/register.php';
 
+const SECTORS_URL = 'backend/sectors.php';
+const sectorSelect = document.getElementById('sector');
+
+async function loadSectors() {
+  try {
+    const response = await fetch(SECTORS_URL);
+
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+
+    const data = await response.json();
+    if (!data.success) throw new Error(data.message);
+
+    sectorSelect.innerHTML = '<options value= " ">- انتخاب کنید -</option>';
+
+    for (const name of data.sectors) {
+      const option = document.createElement('option');
+      option.value = name;
+      option.textContent = name;
+      sectorSelect.appendChild(option);
+    }
+  } catch (err) {
+    console.error('خطا در گرفتن حوزه ها:', err);
+  }
+  
+}
+
+loadSectors();
+
 function showNotice(kind, text) {
   notice.hidden = false;
   notice.textContent = text;
