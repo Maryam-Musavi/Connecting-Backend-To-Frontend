@@ -5,7 +5,7 @@ function get_db_connection(): PDO
     if (!is_dir($dataDir)) {
         mkdir($dataDir, 0755, true);
     }
-    $pdo = new PDO('sqlite:' . $dataDir . 'registration.db');
+    $pdo = new PDO('sqlite:' . $dataDir . '/registration.db');
 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -20,7 +20,7 @@ function get_db_connection(): PDO
             country    TEXT,
             sector     TEXT,
             message    TEXT,
-            created_at TEXT NOT NULL
+            created_at TEXT NOT NULL)
     ");
     return $pdo;
 }

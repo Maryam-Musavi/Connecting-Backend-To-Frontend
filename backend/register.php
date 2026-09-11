@@ -30,12 +30,7 @@ if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-echo json_encode([
-    'success'   => true,
-    'got_name'  => $name,
-    'got_phone' => $phone,
-    'got_email' => $email,
-], JSON_UNESCAPED_UNICODE);
+
 
 require_once __DIR__ . '/db.php';
 
@@ -47,7 +42,7 @@ $message = trim((string)($data['message'] ?? ''));
 try {
     $pdo  = get_db_connection();
     $stmt = $pdo ->prepare(
-        'IMSERT INTO inquiries
+        'INSERT INTO inquiries
             (name, firm, email, phone, country, sector, message, created_at)
         VALUES
             (:name, :firm, :email, :phone, country, :sector, :message, :created_at)'   
@@ -63,9 +58,10 @@ try {
         ':created_at' => date('c'), 
     ]);
 
-    echo json_encode(['success' => true, 'message' => 'درخواست با موفقت ثبت شد'])
+    echo json_encode(['success' => true, 'message' => 'درخواست با موفقت ثبت شد']);
 } catch (Throwable $e) {
     http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'خطا در ذخیره سازی'],
-                    JSON_UNESCAPED_UNICODE);
+    //echo json_encode(['success' => false, 'message' => 'خطا در ذخیره سازی'],
+                    //JSON_UNESCAPED_UNICODE);
+    echo json_encode(['success' => false, 'message' => $e->getMessage()], JSON_UNESCAPED_UNICODE);
 }
