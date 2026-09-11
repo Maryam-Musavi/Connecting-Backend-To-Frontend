@@ -5,11 +5,15 @@
 const form = document.getElementById('registerForm');
 const notice = document.getElementById('formNotice');
 const submitBtn = form.querySelector('.submit-btn');
+const sectorSelect = document.getElementById('sector');
 
 // آدرس بک‌اند. اگر index.html و پوشه‌ی backend کنار هم روی همون سرور هستن،
 // مسیر نسبی کافیه. اگر جدا هاست شدن، این رو به آدرس کامل تغییر بده، مثلا:
 // const BACKEND_URL = 'https://example.com/backend/register.php';
 const BACKEND_URL = 'backend/register.php';
+
+// endpoint جدید از نوع GET: لیست حوزه‌های استعلام را برمی‌گرداند
+const SECTORS_URL = 'backend/sectors.php';
 
 function showNotice(kind, text) {
   notice.hidden = false;
@@ -20,6 +24,37 @@ function showNotice(kind, text) {
 function setLoading(isLoading) {
   submitBtn.disabled = isLoading;
   submitBtn.classList.toggle('is-loading', isLoading);
+}
+
+// ── گرفتن داده از بک‌اند (نیمه‌ی دوم اتصال: بک → فرانت) ──
+async function loadSectors() {
+  try {
+    // نکته: متد پیش‌فرض fetch همان GET است؛ فقط آدرس را می‌دهیم.
+    const response = await fetch(SECTORS_URL);
+
+    if (!response.ok) {
+      throw new Error('HTTP ' + response.status);
+    }
+
+    const data = await response.json();
+
+    if (!data.success) {
+      throw new Error(data.message || 'خطای نامشخص');
+    }
+
+    // گزینه‌ی اول («انتخاب کنید») را نگه می‌داریم و بقیه را از داده‌ی سرور می‌سازیم
+    sectorSelect.innerHTML = '<option value="">— انتخاب کنید —</option>';
+
+    for (const name of data.sectors) {
+      const option = document.createElement('option');
+      option.value = name;
+      option.textContent = name;
+      sectorSelect.appendChild(option);
+    }
+  } catch (err) {
+    // اگر سرور در دسترس نبود، لااقل فرم از کار نمی‌افتد
+    console.error('خطا در گرفتن حوزه‌ها:', err);
+  }
 }
 
 form.addEventListener('submit', async (event) => {
@@ -60,3 +95,6 @@ form.addEventListener('submit', async (event) => {
     setLoading(false);
   }
 });
+
+// موقع باز شدن صفحه، حوزه‌ها را از بک‌اند می‌گیریم
+loadSectors();
