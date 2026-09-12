@@ -18,6 +18,12 @@ if (!is_array($data)) {
  $phone = trim((string)($data['phone'] ?? ''));
  $email = trim((string)($data['email'] ?? ''));
 
+ $website = trim((string)($data['website'] ?? ''));
+ if ($website !== '') {
+    echo json_encode(['success' => true, 'message' => 'درخواست با موفقیت ثبت شد'], );
+    exit;
+ }
+
 if ($name === '' || $phone === '') {
     http_response_code(400);
     echo json_encode(['success' => false, 'message' => 'نام و شماره تماس الزامی است'], JSON_UNESCAPED_UNICODE);
