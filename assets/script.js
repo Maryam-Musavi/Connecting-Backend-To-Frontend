@@ -23,7 +23,7 @@ async function loadSectors() {
     const data = await response.json();
     if (!data.success) throw new Error(data.message);
 
-    sectorSelect.innerHTML = '<options value= " ">- انتخاب کنید -</option>';
+    sectorSelect.innerHTML = '<options value= "">- انتخاب کنید -</option>';
 
     for (const name of data.sectors) {
       const option = document.createElement('option');

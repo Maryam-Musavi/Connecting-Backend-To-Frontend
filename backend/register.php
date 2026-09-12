@@ -45,7 +45,7 @@ try {
         'INSERT INTO inquiries
             (name, firm, email, phone, country, sector, message, created_at)
         VALUES
-            (:name, :firm, :email, :phone, country, :sector, :message, :created_at)'   
+            (:name, :firm, :email, :phone, :country, :sector, :message, :created_at)'   
     );
     $stmt ->execute([
         ':name'       => $name,

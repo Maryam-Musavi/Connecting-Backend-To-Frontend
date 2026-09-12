@@ -5,7 +5,7 @@ function get_db_connection(): PDO
     if (!is_dir($dataDir)) {
         mkdir($dataDir, 0755, true);
     }
-    $pdo = new PDO('sqlite:' . $dataDir . '/registration.db');
+    $pdo = new PDO('sqlite:' . $dataDir . '/registrations.db');
 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
