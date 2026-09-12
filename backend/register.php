@@ -32,6 +32,7 @@ if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 
 
+
 require_once __DIR__ . '/db.php';
 
 $firm    = trim((string)($data['firm'] ?? ''));
