@@ -65,6 +65,19 @@ try {
         ':created_at' => date('c'), 
     ]);
 
+
+if ($email !== '') {
+    $subject = 'رسید درخواست شما';
+    $body    = "نام شما: $name\nتلفن: $phone\nکشور: $country\nپیام شما: $message";
+    $headers = 'Content-Type: text/plain; charset=UTF-8' . "\r\n";
+    $sent = mail($______, $subject, $body, $headers);
+
+    if (!$sent) {
+        error_log('ارسال ایمیل ناموفق بود:  ' . $email);     
+    }                                   
+}       
+
+
     echo json_encode(['success' => true, 'message' => 'درخواست با موفقت ثبت شد']);
 } catch (Throwable $e) {
     http_response_code(500);
