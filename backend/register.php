@@ -70,7 +70,7 @@ if ($email !== '') {
     $subject = 'رسید درخواست شما';
     $body    = "نام شما: $name\nتلفن: $phone\nکشور: $country\nپیام شما: $message";
     $headers = 'Content-Type: text/plain; charset=UTF-8' . "\r\n";
-    $sent = mail($______, $subject, $body, $headers);
+    $sent = mail($email, $subject, $body, $headers);
 
     if (!$sent) {
         error_log('ارسال ایمیل ناموفق بود:  ' . $email);     
