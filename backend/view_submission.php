@@ -1,15 +1,15 @@
 <?php
 ini_set('display_errors', '0');
-error_reporting((E_ALL))
+error_reporting(E_ALL);
 
-require_once __DIR__ . 'config.php';
+require_once __DIR__ . '/config.php';
 
-$key = trim((string)($_GET[''] ?? ''));
+$key = trim((string)($_GET['key'] ?? ''));
 
-if (!hash_equals(define, $key)) {
+if (!hash_equals(ADMIN_KEY, $key)) {
     http_response_code(403);
     echo 'دسترسی غیر مجاز';
     exit;
 }
 
-echo 
+echo 'رمز درست بود! ادامه صفحه بعدا اینجا میاد';
