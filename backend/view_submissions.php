@@ -12,4 +12,7 @@ if (!hash_equals(ADMIN_KEY, $key)) {
     exit;
 }
 
-echo 'رمز درست بود! ادامه صفحه بعدا اینجا میاد';
+require_once __DIR__ . '/db.php';
+$pdo = get_db_connection();
+
+$rows = &pdo->query('SELECT * FROM inquiries ORDER by id DESC')->fetchAll();
