@@ -22,5 +22,15 @@ echo '<tr><th>نام</th><th>شرکت</th>...<th>تاریخ</th><tr>';
 
 foreach ($rows as $row) {
     echo '<tr>';
-    echo '<td>' . htmlspecialchars($row['-------']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['name']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['firm']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['email']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['phone']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['country']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['sector']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['message']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['created_at']) . '</td>';
+    echo '</tr>'
 }
+
+echo '</table>';
