@@ -85,10 +85,16 @@ if ($email !== '') {
 }       
 
 
-    echo json_encode(['success' => true, 'message' => 'درخواست با موفقت ثبت شد']);
+    echo json_encode([
+        'success' => true, 
+        'message' => 'درخواست با موفقت ثبت شد'
+    ]);
 } catch (Throwable $e) {
     http_response_code(500);
     //echo json_encode(['success' => false, 'message' => 'خطا در ذخیره سازی'],
                     //JSON_UNESCAPED_UNICODE);
-    echo json_encode(['success' => false, 'message' => $e->getMessage()], JSON_UNESCAPED_UNICODE);
+    echo json_encode([
+        'success' => false, 
+        'message' => $e->getMessage()
+    ], JSON_UNESCAPED_UNICODE);
 }
