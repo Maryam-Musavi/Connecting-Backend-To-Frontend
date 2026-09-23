@@ -24,7 +24,9 @@ if (!is_array($data)) {
 
  $website = trim((string)($data['website'] ?? ''));
  if ($website !== '') {
-    echo json_encode(['success' => true, 'message' => 'درخواست با موفقیت ثبت شد'], );
+    echo json_encode([
+        'success' => true, 
+        'message' => 'درخواست با موفقیت ثبت شد'], );
     exit;
  }
 
