@@ -20,7 +20,15 @@ $rows = $pdo->query(
     )->fetchAll();
 
 echo '<table border="1" cellpadding="6">';
-echo '<tr><th>نام</th><th>شرکت</th>...<th>تاریخ</th><tr>';
+echo '<tr>
+    <th>نام</th>
+    <th>شرکت</th>
+    <th>ایمیل</th>
+    <th>تلفن</th>
+    <th>حوزه استعلام</th>
+    <th>شرح درخواست</th>
+    <th>تاریخ ثبت</th>
+</tr>';
 
 foreach ($rows as $row) {
     echo '<tr>';
