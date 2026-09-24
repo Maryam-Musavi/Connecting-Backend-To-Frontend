@@ -15,7 +15,9 @@ if (!hash_equals(ADMIN_KEY, $key)) {
 require_once __DIR__ . '/db.php';
 $pdo = get_db_connection();
 
-$rows = &pdo->query('SELECT * FROM inquiries ORDER by id DESC')->fetchAll();
+$rows = $pdo->query(
+    'SELECT * FROM inquiries ORDER BY id DESC'
+    )->fetchAll();
 
 echo '<table border="1" cellpadding="6">';
 echo '<tr><th>نام</th><th>شرکت</th>...<th>تاریخ</th><tr>';
@@ -30,7 +32,7 @@ foreach ($rows as $row) {
     echo '<td>' . htmlspecialchars($row['sector']) . '</td>';
     echo '<td>' . htmlspecialchars($row['message']) . '</td>';
     echo '<td>' . htmlspecialchars($row['created_at']) . '</td>';
-    echo '</tr>'
+    echo '</tr>';
 }
 
 echo '</table>';
