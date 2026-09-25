@@ -37,14 +37,17 @@ if ($name === '' || $phone === '' || $country === '' || $message === '') {
     http_response_code(400);
     echo json_encode([
         'success' => false, 
-        'message' => 'نام و شماره تماس الزامی است'
+        'message' => 'نام، شماره تماس، کشور و شرح درخواست الزامی هستند'
     ], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
 if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'آدرس ایمیل معتبر نیست'], JSON_UNESCAPED_UNICODE);
+    echo json_encode([
+        'success' => false, 
+        'message' => 'آدرس ایمیل معتبر نیست'
+    ], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
