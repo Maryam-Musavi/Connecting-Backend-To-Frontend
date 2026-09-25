@@ -89,7 +89,3 @@ form.addEventListener('submit', async (event) => {
   }
 });
 
-const response = await fetch('backend/register.php', { ... });
-if (!response.ok) {
-  throw new Error('خطایی از سمت سرور رخ داده است');
-}
