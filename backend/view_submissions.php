@@ -18,6 +18,13 @@ $pdo = get_db_connection();
 
 $q = trim((string)($_GET['q'] ?? ''));
 
+echo '<form method="get">';
+echo '<input type="hidden" name="key" value="' . htmlspecialchars($key, ENT_QUOTES, 'UTF-8') . '">';
+echo '<label for="q">جستوجوی نام:</label>';
+echo '<input id="q" name="q" value="' . htmlspecialchars($q, ENT_QUOTES, 'UTF-8') . '">';
+echo '<button type="submit">جستوجو</button>';
+echo '</form>';
+
 if ($q !== '') {
     $stmt = $pdo->prepare(
         'SELECT * FROM inquiries
@@ -25,8 +32,8 @@ if ($q !== '') {
         ORDER BY id DESC'
     );
 
-    $stms->execute([
-        ':q' => '%' . $q .'%'
+    $stmt->execute([
+        ':q' => '%' . $q . '%'
     ]);
 
     $rows = $stmt->fetchAll();
