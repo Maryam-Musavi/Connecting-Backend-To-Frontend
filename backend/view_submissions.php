@@ -15,9 +15,27 @@ if (!hash_equals(ADMIN_KEY, $key)) {
 require_once __DIR__ . '/db.php';
 $pdo = get_db_connection();
 
-$rows = $pdo->query(
+
+$q = trim((string)($_GET['q'] ?? ''));
+
+if ($q !== '') {
+    $stmt = $pdo->prepare(
+        'SELECT * FROM inquiries
+        WHERE name LIKE :q
+        ORDER BY id DESC'
+    );
+
+    $stms->execute([
+        ':q' => '%' . $q .'%'
+    ]);
+
+    $rows = $stmt->fetchAll();
+} else {
+    $rows = $pdo->query(
     'SELECT * FROM inquiries ORDER BY id DESC'
     )->fetchAll();
+}
+
 
 echo '<table border="1" cellpadding="6">';
 echo '<tr>
