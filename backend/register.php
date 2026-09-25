@@ -21,6 +21,9 @@ if (!is_array($data)) {
  $name  = trim((string)($data['name'] ?? ''));
  $phone = trim((string)($data['phone'] ?? ''));
  $email = trim((string)($data['email'] ?? ''));
+ $country = trim((string)($data['country'] ?? ''));
+ $message = trim((string)($data['message'] ?? ''));
+
 
  $website = trim((string)($data['website'] ?? ''));
  if ($website !== '') {
@@ -30,9 +33,12 @@ if (!is_array($data)) {
     exit;
  }
 
-if ($name === '' || $phone === '') {
+if ($name === '' || $phone === '' || $country === '' || $message === '') {
     http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'نام و شماره تماس الزامی است'], JSON_UNESCAPED_UNICODE);
+    echo json_encode([
+        'success' => false, 
+        'message' => 'نام و شماره تماس الزامی است'
+    ], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
@@ -43,14 +49,11 @@ if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 
-
-
 require_once __DIR__ . '/db.php';
 
 $firm    = trim((string)($data['firm'] ?? ''));
-$country = trim((string)($data['country'] ?? ''));
 $sector  = trim((string)($data['sector'] ?? ''));
-$message = trim((string)($data['message'] ?? ''));
+
 
 try {
     $pdo  = get_db_connection();
