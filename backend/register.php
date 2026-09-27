@@ -5,12 +5,14 @@ error_reporting(E_ALL);
 
 header('Content-Type: application/json; charset=UTF-8');
 
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(['success' => false, 'message' => 'فقط POST مجاز است'], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
+// ۲. دریافت داده‌های JSON ارسال‌شده از جاوااسکریپت
  $raw = file_get_contents('php://input');
  $data = json_decode($raw, true);
 
