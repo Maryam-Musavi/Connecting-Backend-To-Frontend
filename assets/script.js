@@ -88,4 +88,3 @@ form.addEventListener('submit', async (event) => {
     setLoading(false);
   }
 });
-
