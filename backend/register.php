@@ -14,7 +14,11 @@ header('Content-Type: application/json; charset=UTF-8');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
-    echo json_encode(['success' => false, 'message' => 'فقط POST مجاز است'], JSON_UNESCAPED_UNICODE);
+    echo json_encode([
+        'success' => false, 
+        'message' => 'فقط POST مجاز است'], 
+        JSON_UNESCAPED_UNICODE
+        );
     exit;
 }
 
@@ -23,7 +27,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
  $data = json_decode($raw, true);
 
 if (!is_array($data)) {
-    $data = $_POST;
+    http_response_code(400);
+    echo json_encode([
+        'success' => false;
+        'message' => 'داده‌های ارسالی نامعتبر هستند (فرمت JSON صحیح نیست).'
+    ], JSON_UNESCAPED_UNICODE);
+    exit;
 }
 
  $name  = trim((string)($data['name'] ?? ''));
