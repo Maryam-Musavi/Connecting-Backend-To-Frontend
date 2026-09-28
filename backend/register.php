@@ -4,7 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 require_once __DIR__ . '/lib/phpmailer/Exception.php';
 require_once __DIR__ . '/lib/phpmailer/PHPMailer.php';
 require_once __DIR__ . '/lib/phpmailer/SMTP.php';
-require_once __DIR__ . 'config.php';
+require_once __DIR__ . '/config.php';
 
 
 ini_set('display_errors', '0');
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 if (!is_array($data)) {
     http_response_code(400);
     echo json_encode([
-        'success' => false;
+        'success' => false,
         'message' => 'داده‌های ارسالی نامعتبر هستند (فرمت JSON صحیح نیست).'
     ], JSON_UNESCAPED_UNICODE);
     exit;
@@ -96,7 +96,7 @@ try {
     ]);
 
 
-$email = new PHPMailer(true);
+$mail = new PHPMailer(true);
 $mail->isSMTP();
 $mail->Host = SMTP_HOST;
 $mail->SMTPAuth = true;
@@ -107,7 +107,7 @@ $mail->Port = SMTP_PORT;
 $mail->CharSet = 'UTF-8';
 
 
-$mail->setForm(SMTP_USERNAME, 'فرم درخواست سایت');
+$mail->setFrom(SMTP_USERNAME, 'فرم درخواست سایت');
 $mail->addAddress(NOTIFY_EMAIL);
 
 if ($email !== '') {
@@ -115,7 +115,7 @@ if ($email !== '') {
 }
 
 $mail->isHTML(false);
-$mail->$subject = 'درخواست جدید از فرم سایت';
+$mail->Subject = 'درخواست جدید از فرم سایت';
 
 $mail->Body = "نام: $name\n"
     . "شرکت: $firm\n"
