@@ -4,6 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 require_once __DIR__ . '/lib/phpmailer/Exception.php';
 require_once __DIR__ . '/lib/phpmailer/PHPMailer.php';
 require_once __DIR__ . '/lib/phpmailer/SMTP.php';
+require_once __DIR__ . 'config.php';
 
 
 ini_set('display_errors', '0');
@@ -95,17 +96,38 @@ try {
     ]);
 
 
-if ($email !== '') {
-    $subject = 'رسید درخواست شما';
-    $body    = "نام شما: $name\nتلفن: $phone\nکشور: $country\nپیام شما: $message";
-    $headers = 'Content-Type: text/plain; charset=UTF-8' . "\r\n";
-    $headers .= 'From: no-reply@example.com';
-    $sent = mail($email, $subject, $body, $headers);
+$email = new PHPMailer(true);
+$mail->isSMTP();
+$mail->Host = SMTP_HOST;
+$mail->SMTPAuth = true;
+$mail->Username = SMTP_USERNAME;
+$mail->Password = SMTP_APP_PASSWORD;
+$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+$mail->Port = SMTP_PORT;
+$mail->CharSet = 'UTF-8';
 
-    if (!$sent) {
-        error_log('ارسال ایمیل ناموفق بود:  ' . $email);     
-    }                                   
-}       
+
+$mail->setForm(SMTP_USERNAME, 'فرم درخواست سایت');
+$mail->addAddress(NOTIFY_EMAIL);
+
+if ($email !== '') {
+    $mail->addReplyTo($email, $name);
+}
+
+$mail->isHTML(false);
+$mail->$subject = 'درخواست جدید از فرم سایت';
+
+$mail->Body = "نام: $name\n"
+    . "شرکت: $firm\n"
+    . "ایمیل: $email\n"
+    . "تلفن: $phone\n"
+    . "کشور: $country\n"
+    . "حوزه: $sector\n"
+    . "شرح درخواست: $message\n";
+
+
+$mail->send();
+
 
 
     echo json_encode([
